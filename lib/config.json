@@ -1,0 +1,14 @@
+{
+  "port": 3000,
+  "host": "localhost",
+  "error": {
+    "format": "{level:x}{module:xxx}{code:xx}",
+    "file": "errors"
+  },
+  "controllers": "controllers",
+  "logger": {
+    "level": "debug",
+    "dir": "log",
+    "filename": "%s.log"
+  }
+}

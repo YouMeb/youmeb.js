@@ -1,0 +1,5 @@
+{
+  "name": "youmeb-controller-generator",
+  "main": "index.js",
+  "keywords": ["youmeb-package"]
+}
