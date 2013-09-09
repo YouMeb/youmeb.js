@@ -1,22 +1,22 @@
 {
   "name": "youmeb",
   "version": "0.0.0",
-  "description": "",
+  "description": "[done] controller generator",
   "main": "./lib/youmeb.js",
   "dependencies": {
     "async": "~0.2.9",
     "borrow": "~0.0.3",
+    "colors": "~0.6.2",
     "debug": "~0.7.2",
     "error-codes": "~0.0.1",
     "express": "~3.3.8",
-    "log": "~1.4.0",
     "mkdirp": "~0.3.5",
     "prompt": "~0.2.11",
     "youmeb-events": "~0.0.0",
+    "youmeb-generator": "~0.0.1",
     "youmeb-injector": "~0.0.0",
-    "youmeb-logger": "~0.0.0",
-    "youmeb-routes": "~0.0.2",
-    "colors": "~0.6.2"
+    "youmeb-logger": "~0.0.1",
+    "youmeb-routes": "~0.0.2"
   },
   "devDependencies": {},
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YouMeb/youmeb.js.git"
+    "url": "git://github.com/YouMeb/youmeb.js.git"
   },
   "keywords": [
     "youmeb",
