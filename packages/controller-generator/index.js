@@ -4,11 +4,16 @@ var fs = require('fs');
 var path = require('path');
 var mkdirp = require('mkdirp');
 
-module.exports = function ($youmeb, $config, $prompt, $cliox) {
+module.exports = function ($youmeb, $prompt, $cliox) {
+  
+  // 監聽 cli-generate 事件
+  // 如果第一個參數是 controller 就繼續執行
   $youmeb.on('cli-generate', function (cliox, args, done) {
     if (args[0] !== 'controller') {
       return done();
     }
+    
+    // 取得 controller 名稱、位置
     $prompt.get([
       {
         name: 'name',
@@ -22,6 +27,11 @@ module.exports = function ($youmeb, $config, $prompt, $cliox) {
       }
       var indent = '';
       var name;
+
+      // 輸入: admin.example.home
+      // 執行:
+      //   1. 建立 [controllers folder]/admin/example
+      //   2. 把資料寫入 home.js
       var ctrlpath = (function () {
         var re = [];
         var str = result.name;
@@ -35,6 +45,7 @@ module.exports = function ($youmeb, $config, $prompt, $cliox) {
         return re.join('/');
       })();
 
+      // 目錄位置
       ctrlpath = path.join($youmeb.root, $youmeb.config.get('controllers'), ctrlpath);
 
       mkdirp(ctrlpath, function (err) {
@@ -58,6 +69,7 @@ module.exports = function ($youmeb, $config, $prompt, $cliox) {
           + '  }\n\n'
           + '};';
 
+        // controller 檔案位置
         ctrlpath = path.join(ctrlpath, name + '.js');
 
         fs.writeFile(ctrlpath, jsFileContent, function (err) {
