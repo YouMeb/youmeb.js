@@ -3,7 +3,7 @@
 var util = require('util');
 var colors = require('colors');
 
-module.exports = function ($youmeb, $routes, $cliox) {
+module.exports = function ($youmeb, $routes) {
   
   $youmeb.on('cli-routes', function (cliox, args, done) {
     $routes.scan(function (err) {

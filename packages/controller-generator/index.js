@@ -2,13 +2,19 @@
 
 var fs = require('fs');
 var path = require('path');
-var mkdirp = require('mkdirp');
+var colors = require('colors');
 
-module.exports = function ($youmeb, $prompt, $cliox) {
+module.exports = function ($youmeb, $prompt, $generator) {
+
+  // 加入 help 訊息
+  $youmeb.on('help', function (command, data, done) {
+    data.commands.push(['generate controller', '', 'create new controller']);
+    done();
+  });
   
   // 監聽 cli-generate 事件
   // 如果第一個參數是 controller 就繼續執行
-  $youmeb.on('cli-generate', function (cliox, args, done) {
+  $youmeb.on('cli-generate', function (parser, args, done) {
     if (args[0] !== 'controller') {
       return done();
     }
@@ -22,10 +28,8 @@ module.exports = function ($youmeb, $prompt, $cliox) {
       }
     ], function (err, result) {
       if (err) {
-        $cliox.log('{{ message }}', {message: 'Error: ' + err.message});
-        return;
+        return done(err);
       }
-      var indent = '';
       var name;
 
       // 輸入: admin.example.home
@@ -46,38 +50,20 @@ module.exports = function ($youmeb, $prompt, $cliox) {
       })();
 
       // 目錄位置
-      ctrlpath = path.join($youmeb.root, $youmeb.config.get('controllers'), ctrlpath);
+      var generator  = $generator.create();
 
-      mkdirp(ctrlpath, function (err) {
-        if (err) {
-          return done(err);
-        }
+      generator.source = path.join(__dirname, 'templates');
+      generator.destination = path.join($youmeb.root, $youmeb.config.get('controllers'), ctrlpath);
 
-        var jsFileContent = ''
-          + '\'use strict\'\n\n'
-          + 'module.exports = function () {\n\n'
-          + '  this.$({\n'
-          + '    name: \'' + name + '\',\n'
-          + '    path:  \'/' + name + '\'\n'
-          + '  });\n\n'
-          + '  this.index = {\n'
-          + '    path: \'/\',\n'
-          + '    handler: function ($youmeb) {\n'
-          + '      this.response.send(\'Hello World !\');\n'
-          + '      // this.next();\n'
-          + '    }\n'
-          + '  }\n\n'
-          + '};';
+      generator.on('create', function (file) {
+        console.log('');
+        console.log('  create '.yellow + file);
+        console.log('');
+      });
 
-        // controller 檔案位置
-        ctrlpath = path.join(ctrlpath, name + '.js');
-
-        fs.writeFile(ctrlpath, jsFileContent, function (err) {
-          if (err) {
-            return done(err);
-          }
-          console.log('\n  controller: ' + ctrlpath + '\n');
-        });
+      generator.createFile('./controller.js', './' + name + '.js', {
+        name: name
+      }, function () {
       });
     });
   });

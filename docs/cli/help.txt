@@ -1,7 +1,0 @@
-
-Usage: youmeb [Options] [Command]
-
-Commands:
-  new       [app] [template]   建立新網站
-  generate  [generator]        產生程式碼
-  roures    [filter]           顯示所有 routes
