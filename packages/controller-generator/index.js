@@ -8,16 +8,13 @@ module.exports = function ($youmeb, $prompt, $generator) {
 
   // 加入 help 訊息
   $youmeb.on('help', function (command, data, done) {
-    data.commands.push(['generate controller', '', 'create new controller']);
+    data.commands.push(['generate:controller', '', 'Generates a controller']);
     done();
   });
   
   // 監聽 cli-generate 事件
   // 如果第一個參數是 controller 就繼續執行
-  $youmeb.on('cli-generate', function (parser, args, done) {
-    if (args[0] !== 'controller') {
-      return done();
-    }
+  $youmeb.on('cli-generate:controller', function (parser, args, done) {
     
     // 取得 controller 名稱、位置
     $prompt.get([

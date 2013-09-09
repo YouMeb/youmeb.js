@@ -4,14 +4,19 @@ var util = require('util');
 var colors = require('colors');
 
 module.exports = function ($youmeb, $routes) {
+
+  // 加入 help 訊息
+  $youmeb.on('help', function (command, data, done) {
+    data.commands.push(['routes', '[filter]', 'Displays current routes for an application']);
+    done();
+  });
   
-  $youmeb.on('cli-routes', function (cliox, args, done) {
+  $youmeb.on('cli-routes', function (parser, args, done) {
     $routes.scan(function (err) {
       if (err) {
         return done(err);
       }
 
-      var format = cliox._format[cliox.get('format')] || cliox.get('format');
       var txtlen = {};
       var routes = [];
       var filter = args[0];
@@ -37,18 +42,6 @@ module.exports = function ($youmeb, $routes) {
         routes.push(data);
       });
 
-      // 預設格式
-      if (typeof format === 'function') {
-        console.log(format(routes));
-        return done();
-      }
-
-      // 使用者指定格式
-      if (typeof format === 'string') {
-        return done();
-      }
-
-      // 無格式
       var str = [];
       routes.forEach(function (route) {
         var item = [];
