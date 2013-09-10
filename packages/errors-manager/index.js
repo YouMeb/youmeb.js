@@ -17,7 +17,7 @@ module.exports = function ($youmeb) {
 
     var file = path.join($youmeb.root, $youmeb.config.get('error.file'));
 
-    (fs.exists(file) ? function (start) {
+    (fs.existsSync(file) ? function (start) {
       fs.readFile(file, 'utf8', start);
     } : function (start) {
       start(null, '');
