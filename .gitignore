@@ -1,1 +1,3 @@
 node_modules
+models
+.DS_store
