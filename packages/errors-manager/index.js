@@ -13,7 +13,7 @@ module.exports = function ($youmeb) {
     done();
   });
 
-  $youmeb.on('cli-errors', function (args, done) {
+  $youmeb.on('cli-errors', function (parser, args, done) {
 
     var file = path.join($youmeb.root, $youmeb.config.get('error.file'));
 

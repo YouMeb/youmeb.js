@@ -1,7 +1,7 @@
 {
   "name": "youmeb",
-  "version": "0.0.0",
-  "description": "[done] controller generator",
+  "version": "0.0.1",
+  "description": "A simple framework",
   "main": "./lib/youmeb.js",
   "dependencies": {
     "async": "~0.2.9",
@@ -14,8 +14,8 @@
     "prompt": "~0.2.11",
     "youmeb-events": "~0.0.0",
     "youmeb-generator": "~0.0.1",
-    "youmeb-injector": "~0.0.0",
-    "youmeb-logger": "~0.0.1",
+    "youmeb-injector": "0.0.1",
+    "youmeb-logger": "0.0.2",
     "youmeb-routes": "0.0.3",
     "jade": "~0.35.0"
   },
