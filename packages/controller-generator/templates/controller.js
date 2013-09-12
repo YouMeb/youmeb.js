@@ -4,7 +4,7 @@ module.exports = function () {
 
   this.$({
     name: '<%= name %>',
-    path: '/<%= name %>'
+    path: ''
   });
 
   this.index = {
