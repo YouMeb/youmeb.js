@@ -1,5 +1,5 @@
 {
-  "name": "youmeb-controller-generator",
+  "name": "youmeb-log-manager",
   "main": "index.js",
   "keywords": ["youmeb-package"]
 }

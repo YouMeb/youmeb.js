@@ -6,7 +6,6 @@ var repl = require('repl');
 
 module.exports = function ($youmeb) {
 
-  // 加入 help 訊息
   $youmeb.on('help', function (command, data, done) {
     data.commands.push(['log', '', 'Log manager']);
     done();

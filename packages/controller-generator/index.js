@@ -60,8 +60,7 @@ module.exports = function ($youmeb, $prompt, $generator) {
 
       generator.createFile('./controller.js', './' + name + '.js', {
         name: name
-      }, function () {
-      });
+      }, done);
     });
   });
 };
