@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function () {
+module.exports = function ($youmeb) {
 
   this.$({
     name: '<%= name %>',
@@ -8,11 +8,10 @@ module.exports = function () {
   });
 
   this.index = {
-    path: '',
+    path: '/',
     methods: ['all'],
-    handler: function ($youmeb) {
-      this.response.sned('<%= name %>');
-      // this.next();
+    handler: function (req, res, next) {
+      res.send('<%= name %>');
     }
   };
 
