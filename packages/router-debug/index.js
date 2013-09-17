@@ -3,7 +3,7 @@
 var util = require('util');
 var colors = require('colors');
 
-module.exports = function ($youmeb, $routes) {
+module.exports = function ($youmeb, $routes, $injector) {
 
   // 加入 help 訊息
   $youmeb.on('help', function (command, data, done) {
@@ -12,6 +12,8 @@ module.exports = function ($youmeb, $routes) {
   });
   
   $youmeb.on('cli-routes', function (parser, args, done) {
+    $routes.injector($injector);
+
     $routes.scan(function (err) {
       if (err) {
         return done(err);
