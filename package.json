@@ -16,7 +16,7 @@
     "youmeb-generator": "~0.0.1",
     "youmeb-injector": "~0.0.2",
     "youmeb-logger": "~0.0.3",
-    "youmeb-routes": "~0.0.3",
+    "youmeb-routes": "~0.0.5",
     "jade": "~0.35.0"
   },
   "devDependencies": {},
