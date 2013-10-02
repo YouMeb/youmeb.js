@@ -1,6 +1,6 @@
 {
   "name": "youmeb",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A simple framework",
   "main": "./lib/youmeb.js",
   "dependencies": {
@@ -12,11 +12,11 @@
     "express": "~3.3.8",
     "mkdirp": "~0.3.5",
     "prompt": "~0.2.11",
-    "youmeb-events": "~0.0.0",
-    "youmeb-generator": "~0.0.1",
-    "youmeb-injector": "~0.0.2",
-    "youmeb-logger": "~0.0.3",
-    "youmeb-routes": "~0.0.5",
+    "youmeb-events": "0.0.0",
+    "youmeb-generator": "0.0.1",
+    "youmeb-injector": "0.0.5",
+    "youmeb-logger": "0.0.3",
+    "youmeb-routes": "0.0.7",
     "jade": "~0.35.0"
   },
   "devDependencies": {},
