@@ -1,0 +1,10 @@
+{
+  "name": "youmeb-routes",
+  "main": "index.js",
+  "keywords": ["youmeb-package"],
+  "youmeb": {
+    "dependencies": {
+      "express": "*"
+    }
+  }
+}

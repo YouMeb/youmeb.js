@@ -8,7 +8,7 @@
     "borrow": "~0.0.3",
     "colors": "~0.6.2",
     "debug": "~0.7.2",
-    "error-codes": "~0.0.1",
+    "error-codes": "0.0.2",
     "express": "~3.3.8",
     "mkdirp": "~0.3.5",
     "prompt": "~0.2.11",
