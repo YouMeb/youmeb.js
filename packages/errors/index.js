@@ -30,7 +30,7 @@ module.exports = function ($youmeb) {
       });
       console.log();
       arr.forEach(function (raw) {
-        console.log('  %s  %s', space(raw.key, len.key).green, space(raw.code, len.code), space(raw.message, len.message));
+        console.log('  %s  %s  %s', space(raw.key, len.key).green, space(raw.code, len.code), space(raw.message, len.message));
       });
       console.log();
     });
