@@ -4,7 +4,7 @@ var http = require('http');
 var express = require('express');
 var colors = require('colors');
 
-module.exports = function ($youmeb) {
+module.exports = function ($youmeb, $logger) {
   
   var app = $youmeb.app = express();
 
@@ -18,7 +18,7 @@ module.exports = function ($youmeb) {
     app.use(function (err, req, res, next) {
       if (err) {
         var msg = (err.code ? '<' + err.code + '> ' : '') + (err.message || '');
-        that.logger.error(msg);
+        $logger.error(msg);
         err.status = err.status || 503;
         res.send(err.status, err.status + '<br />' + msg);
         return;
