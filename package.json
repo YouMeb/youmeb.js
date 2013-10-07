@@ -1,6 +1,6 @@
 {
   "name": "youmeb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple framework",
   "main": "./lib/youmeb.js",
   "dependencies": {
