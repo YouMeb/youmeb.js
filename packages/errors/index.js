@@ -1,6 +1,7 @@
 'use strict';
 
 var fs = require('fs');
+var path = require('path');
 var errors = require('error-codes');
 var colors = require('colors');
 
@@ -57,7 +58,7 @@ function defineAllErrors($youmeb, $errors, done) {
 
 function getErrorsData($youmeb, done) {
   var data = [];
-  fs.readFile($youmeb.config.get('error.file'), 'utf8', function (err, content) {
+  fs.readFile(path.join($youmeb.root, $youmeb.config.get('error.file')), 'utf8', function (err, content) {
     if (err) {
       return done(err);
     }
