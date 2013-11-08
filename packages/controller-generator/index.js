@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var colors = require('colors');
 
-module.exports = function ($youmeb, $prompt, $generator) {
+module.exports = function ($youmeb, $inquirer, $generator) {
 
   // 加入 help 訊息
   $youmeb.on('help', function (command, data, done) {
@@ -16,17 +16,15 @@ module.exports = function ($youmeb, $prompt, $generator) {
   // 如果第一個參數是 controller 就繼續執行
   $youmeb.on('cli-generate:controller', function (parser, args, done) {
     
-    // 取得 controller 名稱、位置
-    $prompt.get([
+    var questions = [
       {
+        type: 'input',
         name: 'name',
-        type: 'string',
-        default: 'example.home'
+        message: 'What is the controller name'
       }
-    ], function (err, result) {
-      if (err) {
-        return done(err);
-      }
+    ];
+
+    $inquirer.prompt(questions, function (answers) {
       var name;
 
       // 輸入: admin.example.home
@@ -35,7 +33,7 @@ module.exports = function ($youmeb, $prompt, $generator) {
       //   2. 把資料寫入 home.js
       var ctrlpath = (function () {
         var re = [];
-        var str = result.name;
+        var str = answers.name;
         str = str
           .replace(/\\\./g, '\uffff')
           .split('.');
